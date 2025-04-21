@@ -314,12 +314,12 @@ def main():
                     json_result= parse_invoice(i)
                     jsonfiles["outputList"].append(json_result)
                 json_str = json.dumps(all_results, indent=2,ensure_ascii=False)
-                st.download_button(
-                        label="第三步：下载EXCEL压缩包",
-                        data=json_str,
-                        file_name="all_results.json",
-                        mime="application/json",  # 指定 MIME 类型
-                    )
+                #st.download_button(
+                        #label="第三步：下载EXCEL压缩包",
+                        #data=json_str,
+                        #file_name="all_results.json",
+                        #mime="application/json",  # 指定 MIME 类型
+                    #)
                 # 创建下载按钮列
                 col1, col2, col3, col4 = st.columns(4)
                 with col1:
