@@ -273,7 +273,7 @@ def main():
         file_count = len(uploaded_files)
         pdf_count = sum(1 for f in uploaded_files if f.type == "application/pdf")
         image_count = file_count - pdf_count
-        st.success(f"成功上传 {file_count} 个文件（{pdf_count} 个 PDF")
+        st.success(f"成功上传 {file_count} 个文件（{pdf_count} 个 PDF）")
     # 添加按钮
     analyze_button = st.button("第二步：点击解析发票文件")
     
