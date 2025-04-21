@@ -268,14 +268,14 @@ def json_to_dataframe3(json_data):
 
 def main():
     # 上传多个 PDF 文件
-    uploaded_files = st.file_uploader("请上传",type=["pdf"], accept_multiple_files=True)
+    uploaded_files = st.file_uploader("第一步：请上传发票文件",type=["pdf"], accept_multiple_files=True)
     if uploaded_files:
         file_count = len(uploaded_files)
         pdf_count = sum(1 for f in uploaded_files if f.type == "application/pdf")
         image_count = file_count - pdf_count
         st.success(f"成功上传 {file_count} 个文件（{pdf_count} 个 PDF")
     # 添加按钮
-    analyze_button = st.button("点击解析发票文件")
+    analyze_button = st.button("第二步：点击解析发票文件")
     
     if uploaded_files and analyze_button:
         token = get_token()
@@ -315,7 +315,7 @@ def main():
                     jsonfiles["outputList"].append(json_result)
                 json_str = json.dumps(all_results, indent=2,ensure_ascii=False)
                 st.download_button(
-                        label="下载",
+                        label="第三步：下载EXCEL压缩包",
                         data=json_str,
                         file_name="all_results.json",
                         mime="application/json",  # 指定 MIME 类型
