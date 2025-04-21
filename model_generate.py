@@ -8,7 +8,6 @@ from langchain_community.document_loaders import CSVLoader
 from typing import List
 import sys
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../utils')))
-from logger import init_log  # 假设 logger.py 中有一个 Logger 类或对象
 
 
 class RequestAPI():
