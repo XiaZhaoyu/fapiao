@@ -5,6 +5,7 @@ langchain
 langchain-community
 modelscope
 xlrd
+oss2
 openpyxl
 tabulate
 deepspeed
