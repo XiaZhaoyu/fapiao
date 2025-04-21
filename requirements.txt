@@ -1,0 +1,11 @@
+openai>=1.0.0
+rich
+tabulate
+langchain
+langchain-community
+modelscope
+xlrd
+openpyxl
+tabulate
+deepspeed
+volcengine-python-sdk 
