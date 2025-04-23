@@ -1,12 +1,7 @@
 openai>=1.0.0
 rich
-tabulate
-langchain
-langchain-community
+streamlit
 modelscope
 xlrd
 oss2
 openpyxl
-tabulate
-deepspeed
-volcengine-python-sdk 
