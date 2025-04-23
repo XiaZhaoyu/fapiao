@@ -11,11 +11,16 @@ RUN apt-get update && apt-get install -y \
     && rm -rf /var/lib/apt/lists/*
 
 RUN git clone https://github.com/XiaZhaoyu/fapiao.git
+# 切换到克隆仓库的目录
+WORKDIR /app/fapiao
+# 设置 PATH 环境变量
+ENV PATH="/root/.local/bin:${PATH}"
 
-RUN pip3 install -r requirements.txt
+# 使用阿里云镜像源安装依赖
+RUN pip3 install -i https://mirrors.aliyun.com/pypi/simple/ -r requirements.txt
 
+# 暴露端口
 EXPOSE 8501
 
-HEALTHCHECK CMD curl --fail http://localhost:8501/_stcore/health
-
-ENTRYPOINT ["streamlit", "run", "发票识别.py", "--server.port=8501", "--server.address=0.0.0.0"]
+# 启动 streamlit 应用
+CMD ["streamlit", "run", "发票识别.py"]
