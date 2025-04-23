@@ -4,8 +4,6 @@ import pandas as pd
 import time
 from datetime import datetime
 from rich import print as rprint
-from langchain_community.document_loaders import CSVLoader
-from typing import List
 import sys
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../utils')))
 
@@ -67,9 +65,3 @@ class RequestAPI():
                 }
             )
             return resp.choices[0].message.content, ""
-
-if __name__ == "__main__":
-    prompt = """# 任务目标\n从用户上传的发票图片中提取出发票类型判断符（judge）、发票税额（tax）、总额（total）、发票发生日期（date）、发票号（code）、项目名称（item）和销售方名称（sellname）。\n# 具体要求\n1. 发票种类判断符分为以下几类：普通发票、增值税发票、铁路电子客票\n2. 发票发生日期格式为：YYYY年MM月DD日\n3. 发票税额：若发票上不包含税额，则填写为0\n5. 项目名称：结合发票类型判断符（judge）进行判断，若为铁路电子客票，则填写“火车票”；否则填写发票上的“项目名称”，并用空格代替“*”；如果项目名称存在多行，则将各行项目名称以半角逗号“,”分割\n# 以下是用户上传的发票图片"""
-    image = "/root/jupyter-space/data/invoice_parse/invoice-normal.jpg"
-    api = RequestAPI(log_dir="history/invoice_parse")
-    response, usage = api.generate_by_ark(prompt=prompt, model="doubao-1-5-vision-pro-32k-250115", image=image, stream=True)
